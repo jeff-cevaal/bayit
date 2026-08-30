@@ -1,4 +1,12 @@
 [tools]
 bat = "latest"
 chezmoi = "latest"
+fd = "latest"
+fzf = "latest"
+lazygit = "latest"
+lsd = "latest"
+neovim = "latest"
+node = "latest"
+ripgrep = "latest"
+usage = "latest"  # for mise completion
 vim = "latest"
