@@ -14,8 +14,11 @@ PURE_GIT_PULL=0
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 
-prompt pure
+psvar[13]=0
+zstyle :prompt:pure:git:dirty detailed yes
+zstyle :prompt:pure:host show no
 
+prompt pure
 
 # enable zsh vi-mode
 bindkey -v
