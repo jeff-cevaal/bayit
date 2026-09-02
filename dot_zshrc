@@ -5,6 +5,9 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
+setopt HIST_IGNORE_DUPS    # Don't save duplicate lines
+setopt SHARE_HISTORY       # Share history between sessions
+
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -44,6 +47,59 @@ if command -v mise > /dev/null ; then
 fi
 
 
+# ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#path = (
+#     $path
+#)
+
+# Remove duplicate entries and non-existent directories
+#typeset -U path
+#path($^path(N-/))
+
+#export PATH
+
+
+# ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+alias v='nvim'
+alias c='clear'
+alias t='tmux'
+alias e='exit'
+alias ssn='sudo shutdown now'
+alias srn='sudo reboot now'
+
+if command -v bat > /dev/null ; then
+  alias cat='bat'
+fi
+
+if command -v lsd > /dev/null ; then
+  alias ls='lsd'
+  alias ll='ls -lgh'
+  alias la='ls -lathr'
+  alias lla='ls -lgha'
+  alias lt='ls --tree'
+fi
+
+# git
+alias gp='git pull'
+alias gs='git status'
+alias lg='lazygit'
+
+# kubernetes
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kc='kubectx'
+alias kn='kubens'
+
+alias fgk='flux get kustomizations'
+
+# devpod
+alias ds='devpod ssh'
+
+
 # ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -53,31 +109,18 @@ if command -v fzf > /dev/null ; then
   source <(fzf --zsh)
 fi
 
+<Left>if command -v k3d > /dev/null ; then
+  source <(k3d completion zsh)
+fi
+
+if command -v kubectl > /dev/null ; then
+  source <(kubectl completion zsh)
+fi
+
 if command -v flux > /dev/null ; then
   source <(flux completion zsh)
 fi
 
-
 if command -v mise > /dev/null ; then
   source <(mise completion zsh)
-fi
-
-
-# ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-alias v=nvim
-alias gp="git pull"
-alias lg=lazygit
-
-if command -v bat > /dev/null ; then
-  alias cat="bat"
-fi
-
-if command -v lsd > /dev/null ; then
-  alias ls="lsd"
-  alias ll="ls -lgh"
-  alias la='ls -lathr'
-  alias lla='ls -lgha'
-  alias lt='ls --tree'
 fi
