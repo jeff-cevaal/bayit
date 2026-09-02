@@ -50,15 +50,16 @@ fi
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-path = (
-     $path
-)
+#path = (
+#     $path
+#     $HOME/.local/bin
+#)
 
 # Remove duplicate entries and non-existent directories
-typeset -U path
-path($^path(N-/))
+#typeset -U path
+#path($^path(N-/))
 
-export PATH
+#export PATH
 
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
