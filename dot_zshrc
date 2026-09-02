@@ -50,15 +50,15 @@ fi
 # ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-#path = (
-#     $path
-#)
+path = (
+     $path
+)
 
 # Remove duplicate entries and non-existent directories
-#typeset -U path
-#path($^path(N-/))
+typeset -U path
+path($^path(N-/))
 
-#export PATH
+export PATH
 
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,7 +109,7 @@ if command -v fzf > /dev/null ; then
   source <(fzf --zsh)
 fi
 
-<Left>if command -v k3d > /dev/null ; then
+if command -v k3d > /dev/null ; then
   source <(k3d completion zsh)
 fi
 
